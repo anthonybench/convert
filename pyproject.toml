@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "sleepyconvert"
+version = "0.0.1"
+description = "converts data files, images and documents to different formats"
+authors = ["anthonybench <anythonybenchyep@gmail.com>"]
+license = "GNU GPL"
+readme = "README.md"
+repository = "https://github.com/anthonybench/convert"
+keywords = ["pandas", "data"]
+packages = [
+    { include = "sleepyconvert_toolchain" },
+    { include = "sleepyconvert.py" },
+]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pandas = "^1.5.1"
+pyarrow = "^11.0"
+typer = "^0.15"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
