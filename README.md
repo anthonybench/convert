@@ -1,5 +1,5 @@
 # **sleepyconvert**
-*a quick way to convert file formats.*
+*A quick way to convert file formats.*
 
 <br />
 
@@ -47,7 +47,7 @@ Set a function in your shell environment to run a script like:
 alias convert='python -m sleepyconvert'
 ```
 
-Presuming you've named said function `convert`, print the help message:
+Presuming you've named said macro `convert`, print the help message:
 ```sh
 convert --help
 convert data data.csv data.parquet
