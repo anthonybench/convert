@@ -18,15 +18,17 @@ def readData(format:str, path:str) -> pd.DataFrame:
 
 def writeData(df:pd.DataFrame, format:str, path:str, compress:bool) -> None:
   '''dispatch table to write data file according to file extension'''
-  if compress:
-    path = path + '.gz'
-  {
+  dispatch = {
     'csv':df.to_csv,
     'json':df.to_json,
     'parquet':df.to_parquet,
     'pkl':df.to_pickle,
     'xlsx':df.to_excel,
-  }[format](path, compression='gzip' if compress else None)
+  }
+  if compress:
+    dispatch[format](f'{path}.gz', compression='gzip')
+  else:
+    dispatch[format](path)
 
 
 def verifyPaths(input_path:str, output_path:str, supported_formats:List[str]) -> Tuple[str, str]:
