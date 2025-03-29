@@ -13,6 +13,7 @@ def data(input_path:str, output_path:str, compress:bool=False):
   input_format, output_format = verifyPaths(input_path, output_path, supported_data_formats)
   if not (input_format and output_format):
     exit(1)
+    
   # additional guards
   if input_format == output_format:
     print(f'Input and output formats are the same: {input_format}')
