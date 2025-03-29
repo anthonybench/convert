@@ -5,3 +5,4 @@
   - html
   - markdown
   - pdf
+- github action for pypi build
