@@ -1,9 +1,10 @@
 from pathlib import Path, PurePosixPath
 import pandas as pd
 from typing import List, Tuple
+from rich import print
 from sleepyconvert_toolchain.params import *
 
-#───Utils────────────────────
+
 def readData(format:str, path:str) -> pd.DataFrame:
   '''dispatch table to read data file according to file extension'''
   return {
@@ -14,15 +15,19 @@ def readData(format:str, path:str) -> pd.DataFrame:
     'xlsx':pd.read_excel,
   }[format](path)
 
-def writeData(df:pd.DataFrame, format:str, path:str) -> None:
+
+def writeData(df:pd.DataFrame, format:str, path:str, compress:bool) -> None:
   '''dispatch table to write data file according to file extension'''
+  if compress:
+    path = path + '.gz'
   {
     'csv':df.to_csv,
     'json':df.to_json,
     'parquet':df.to_parquet,
     'pkl':df.to_pickle,
     'xlsx':df.to_excel,
-  }[format](path)
+  }[format](path, compression='gzip' if compress else None)
+
 
 def verifyPaths(input_path:str, output_path:str, supported_formats:List[str]) -> Tuple[str, str]:
   '''check if input and output paths are valid, pass back formats'''

@@ -1,10 +1,28 @@
-# **TITLE**
-*SUB_TITLE*
+# **sleepyconvert**
+*a quick way to convert file formats.*
 
 <br />
 
-## **Welcome to PKG!**
-TODO
+## **Welcome to sleepyconvert!**
+Do you find yourself bookmarking various online converters or having several tools to convert common file types? I did, and it didn't spark joy.
+
+**`sleepyconvert`** is a tool that handles this in a minimal syntax.
+
+Quickly convert file formats to and from:
+- **data**
+  - `csv`
+  - `parquet`
+  - `json`
+  - `pkl`
+  - `xlsx`
+- **img**
+  - TODO: not yet implemented
+- **doc**
+  - TODO: not yet implemented
+
+For some data files, you can optionally compress (*gzip*) the output.
+
+> ℹ️ Note that this tool presumes format by file extension. If you leave out extensions, or give csv data a `.json` extension for funsies, then you're being silly.
 
 <br />
 
@@ -12,10 +30,11 @@ TODO
 <hr>
 
 ```sh
-pip install TODO
-pip install --upgrade TODO
+pip install sleepyconvert
+pip install --upgrade sleepyconvert
 
-#...
+python -m sleepyconvert data data.csv data.parquet --compress
+python -m sleepyconvert --help
 ```
 
 <br />
@@ -23,30 +42,38 @@ pip install --upgrade TODO
 ## **Usage ⚙**
 <hr>
 
-TODO
+Set a function in your shell environment to run a script like:
+```sh
+alias convert='python -m sleepyconvert'
+```
+
+Presuming you've named said function `convert`, print the help message:
+```sh
+convert --help
+convert data data.csv data.parquet
+```
 
 <br />
 
 ## **Technologies 🧰**
 <hr>
 
-  - [TODO](URL)
-  - [TODO](URL)
-  - [TODO](URL)
+  - [Pandas](https://pandas.pydata.org/docs/)
+  - [Typer](https://typer.tiangolo.com/)
+  - [PyArrow](https://arrow.apache.org/docs/python/index.html)
+  - [openpyxl](https://pypi.org/project/openpyxl/)
 
 <br />
 
 ## **Contribute 🤝**
 <hr>
 
-TODO
+If you have thoughts on how to make the tool more pragmatic, submit a PR 😊.
 
-<br />
-
-## **Acknowledgements 💙**
-<hr>
-
-TODO: also optional
+To add support for more data/file types:
+1. append extension name to `supported_<mode>_formats` in `sleepyconvert_toolchain.params.py`
+2. add detection logic branch to the `main` function in `sleepyconvert_toolchain/commands.py`
+3. update this readme
 
 <br />
 
@@ -56,9 +83,11 @@ TODO: also optional
 <img align="right" alt="example image tag" src="https://i.imgur.com/ZHnNGeO.png" width="200" />
 
 <!-- badge cluster -->
-TODO [SHIELD](https://shields.io/)
+![PyPI - License](https://img.shields.io/pypi/l/sleepyconvert?style=plastic)
+![PyPI - Version](https://img.shields.io/pypi/v/sleepyconvert)
+![GitHub repo size](https://img.shields.io/github/repo-size/anthonybench/convert)
 <!-- / -->
 
-See [License](TODO) for the full license text.
+See [License](LICENSE) for the full license text.
 
 This package was authored by *Isaac Yep*.
