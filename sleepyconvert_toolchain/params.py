@@ -6,6 +6,10 @@ supported_data_formats = [
   'xlsx',
 ]
 
-supported_img_formats = [] # TODO: add supported image formats
+supported_img_formats = [
+  'png',
+  'jpg',
+  'jpeg',
+]
 
 supported_doc_formats = [] # TODO: add supported document formats

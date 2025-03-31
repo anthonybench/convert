@@ -16,7 +16,8 @@ Quickly convert file formats to and from:
   - `pkl`
   - `xlsx`
 - **img**
-  - TODO: not yet implemented
+  - `png`
+  - `jpg`/`jpeg`
 - **doc**
   - TODO: not yet implemented
 
