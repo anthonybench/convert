@@ -52,6 +52,7 @@ Presuming you've named said macro `convert`, print the help message:
 ```sh
 convert --help
 convert data data.csv data.parquet
+convert img selfie.jpg selfie.png
 ```
 
 <br />
