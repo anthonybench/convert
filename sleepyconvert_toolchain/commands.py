@@ -9,7 +9,7 @@ app = typer.Typer(help="Convert common filetypes and data formats quickly.")
 
 @app.command()
 def data(input_path:str, output_path:str, compress:bool=False):
-  '''Convert data file from one format to another, optionally compressing output.'''
+  '''Convert data file from one format to another, optionally compressing output'''
   input_format, output_format = verifyPaths(input_path, output_path, supported_data_formats)
   if not (input_format and output_format):
     exit(1)
@@ -85,8 +85,8 @@ def doc(input_path:str, output_path:str):
       case ('md', 'html'):
         convertMDtoHTML(input_path, output_path)
   except Exception as e:
-      errorMessage(f'Error converting {input_path} to {output_path}:\n{e}')
-      exit(1)
+    errorMessage(f'Error converting {input_path} to {output_path}:\n{e}')
+    exit(1)
 
   # log
   successMessage(input_path, output_path, compress=False)

@@ -27,7 +27,7 @@ For some data files, you can optionally compress (*gzip*) the output.
 
 > ℹ️ Note that this tool presumes format by file extension. If you leave out extensions, or give csv data a `.json` extension for funsies, then you're being silly.
 
-> ℹ️ Due to how document file formats vary, not all functionality can be preserved from one type to another
+> ℹ️ Due to how document file formats vary, not all functionality can be preserved from one type to another, and formatting 1-1-ness may vary.
 
 <br />
 

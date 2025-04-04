@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "sleepyconvert"
-version = "1.0.0"
+version = "1.0.1"
 description = "converts data files, images and documents to different formats"
 authors = ["anthonybench <anythonybenchyep@gmail.com>"]
 license = "GNU GPL"

@@ -3,7 +3,6 @@ import pandas as pd
 from typing import List, Tuple
 from rich import print
 from PIL import Image
-# import pdfkit
 import markdown
 from weasyprint import HTML
 import fitz
@@ -115,7 +114,7 @@ def convertPDFtoMD(pdf_path:str, md_path:str) -> None:
   for page_num in range(len(pdf_document)):
     page = pdf_document.load_page(page_num)
     text = page.get_text()
-    # Basic attempt to add headings based on potential font size (very rudimentary)
+    # basic attempt to add headings based on potential font size (very rudimentary)
     lines = text.splitlines()
     for line in lines:
       if line.strip():

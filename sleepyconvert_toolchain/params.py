@@ -15,5 +15,5 @@ supported_img_formats = [
 supported_doc_formats = [
   'html',
   'pdf',
-  'md'
+  'md',
 ]
