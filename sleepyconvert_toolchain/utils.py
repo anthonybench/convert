@@ -3,6 +3,11 @@ import pandas as pd
 from typing import List, Tuple
 from rich import print
 from PIL import Image
+# import pdfkit
+import markdown
+from weasyprint import HTML
+import fitz
+import html2text
 from sleepyconvert_toolchain.params import *
 
 
@@ -73,7 +78,70 @@ def convertPNGtoJPG(png_path:str, jpg_path:str, quality:int=100) -> None:
   img.save(jpg_path, "JPEG", quality=quality)
 
 
-def convertJPGtoPNG(jpg_path:str, png_path:str) -> bool:
+def convertJPGtoPNG(jpg_path:str, png_path:str) -> None:
   """converts a JPG image to PNG format"""
   img = Image.open(jpg_path)
   img.save(png_path, "PNG")
+
+
+def convertHTMLtoPDF(html_path:str, pdf_path:str) -> None:
+  """converts an HTML file to PDF format"""
+  HTML(html_path).write_pdf(pdf_path)
+
+
+def convertPDFtoHTML(pdf_path:str, html_path:str) -> None:
+  """converts a PDF file to HTML format"""
+  pdf_document = fitz.open(pdf_path)
+  html_content = ""
+  for page_num in range(len(pdf_document)):
+    page = pdf_document.load_page(page_num)
+    html_content += page.get_text("html")
+  with open(html_path, 'w', encoding='utf-8') as html_file:
+    html_file.write(html_content)
+
+
+def convertMDtoPDF(md_path:str, pdf_path:str) -> None:
+  """converts a Markdown file to PDF format"""
+  with open(md_path, 'r', encoding='utf-8') as f:
+    markdown_text = f.read()
+  html = markdown.markdown(markdown_text)
+  HTML(string=html).write_pdf(pdf_path)
+
+
+def convertPDFtoMD(pdf_path:str, md_path:str) -> None:
+  """converts a PDF file to Markdown format"""
+  pdf_document = fitz.open(pdf_path)
+  markdown_content = ""
+  for page_num in range(len(pdf_document)):
+    page = pdf_document.load_page(page_num)
+    text = page.get_text()
+    # Basic attempt to add headings based on potential font size (very rudimentary)
+    lines = text.splitlines()
+    for line in lines:
+      if line.strip():
+        if len(line.split()) < 6 and line[0].isupper(): # Very basic heuristic
+          markdown_content += f"\n## {line.strip()}\n"
+        else:
+          markdown_content += f"{line.strip()}\n"
+    markdown_content += "\n---\n" # Page separator
+
+  with open(md_path, 'w', encoding='utf-8') as md_file:
+    md_file.write(markdown_content)
+
+
+def convertHTMLtoMD(html_path:str, md_path:str) -> None:
+  """converts an HTML file to Markdown format"""
+  with open(html_path, 'r', encoding='utf-8') as f:
+    html_content = f.read()
+  markdown_text = html2text.html2text(html_content)
+  with open(md_path, 'w', encoding='utf-8') as md_file:
+    md_file.write(markdown_text)
+
+
+def convertMDtoHTML(md_path:str, html_path:str) -> None:
+  """converts a Markdown file to HTML format"""
+  with open(md_path, 'r', encoding='utf-8') as f:
+    markdown_text = f.read()
+  html = markdown.markdown(markdown_text)
+  with open(html_path, 'w', encoding='utf-8') as html_file:
+    html_file.write(html)

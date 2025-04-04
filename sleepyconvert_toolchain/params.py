@@ -12,4 +12,8 @@ supported_img_formats = [
   'jpeg',
 ]
 
-supported_doc_formats = [] # TODO: add supported document formats
+supported_doc_formats = [
+  'html',
+  'pdf',
+  'md'
+]

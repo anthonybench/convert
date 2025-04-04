@@ -1,8 +1,1 @@
-- implement **img**
-  - png
-  - jpg | jpeg
-- implement **doc**
-  - html
-  - markdown
-  - pdf
 - github action for pypi build

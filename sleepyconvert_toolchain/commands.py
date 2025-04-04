@@ -1,7 +1,6 @@
 from sys import exit
 from rich import print
 import typer
-from PIL import Image
 from sleepyconvert_toolchain.params import *
 from sleepyconvert_toolchain.utils import *
 
@@ -48,19 +47,15 @@ def img(input_path:str, output_path:str):
     exit(1)
 
   # write
-  match (input_format, output_format):
-    case ('png', 'jpg'|'jpeg'):
-      try:
-        convertPNGtoJPG(input_path, output_path)
-      except Exception as e:
-        errorMessage(f'Error converting PNG to JPG:\n{e}')
-        exit(1)
-    case ('jpg'|'jpeg', 'png'):
-      try:
-        convertJPGtoPNG(input_path, output_path)
-      except Exception as e:
-        errorMessage(f'Error converting JPG to PNG:\n{e}')
-        exit(1)
+    try:
+      match (input_format, output_format):
+        case ('png', 'jpg'|'jpeg'):
+          convertPNGtoJPG(input_path, output_path)
+        case ('jpg'|'jpeg', 'png'):
+          convertJPGtoPNG(input_path, output_path)
+    except Exception as e:
+      errorMessage(f'Error converting {input_format} to {output_format}:\n{e}')
+      exit(1)
 
   # log
   successMessage(input_path, output_path, compress=False)
@@ -74,7 +69,24 @@ def doc(input_path:str, output_path:str):
   if not (input_format and output_format):
     exit(1)
 
-  # TODO
+  # write
+  try:
+    match (input_format, output_format):
+      case ('html', 'pdf'):
+        convertHTMLtoPDF(input_path, output_path)
+      case ('pdf', 'html'):
+        convertPDFtoHTML(input_path, output_path)
+      case ('md', 'pdf'):
+        convertMDtoPDF(input_path, output_path)
+      case ('pdf', 'md'):
+        convertPDFtoMD(input_path, output_path)
+      case ('html', 'md'):
+        convertHTMLtoMD(input_path, output_path)
+      case ('md', 'html'):
+        convertMDtoHTML(input_path, output_path)
+  except Exception as e:
+      errorMessage(f'Error converting {input_path} to {output_path}:\n{e}')
+      exit(1)
 
   # log
   successMessage(input_path, output_path, compress=False)

@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "sleepyconvert"
-version = "0.1.1"
+version = "1.0.0"
 description = "converts data files, images and documents to different formats"
 authors = ["anthonybench <anythonybenchyep@gmail.com>"]
 license = "GNU GPL"
@@ -17,6 +17,11 @@ python = "^3.10"
 pandas = "^1.5.1"
 pyarrow = "^11.0"
 typer = "^0.15"
+openpyxl = "^3.1.5"
+weasyprint = "^65.0"
+PyMuPDF = "^1.25.5"
+Markdown = "^3.7"
+html2text = "^2024.2.26"
 
 [build-system]
 requires = ["poetry-core"]
