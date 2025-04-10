@@ -1,6 +1,6 @@
 [project]
 name = "sleepyconvert"
-version = "1.0.2"
+version = "1.0.3"
 description = "Converts data files, images and documents to different formats"
 keywords = ["pandas", "data", "documents", "images", "converter", "cli"]
 
@@ -12,7 +12,6 @@ authors = [
 ]
 
 dependencies = [
-  "python ~=3.10",
   "pandas ~=1.5.1",
   "pyarrow ~=11.0",
   "typer ~=0.15",
