@@ -1,6 +1,6 @@
 [project]
 name = "sleepyconvert"
-version = "1.0.3"
+version = "1.0.4"
 description = "Converts data files, images and documents to different formats"
 keywords = ["pandas", "data", "documents", "images", "converter", "cli"]
 
@@ -12,14 +12,14 @@ authors = [
 ]
 
 dependencies = [
-  "pandas ~=1.5.1",
-  "pyarrow ~=11.0",
-  "typer ~=0.15",
-  "openpyxl ~=3.1.5",
-  "weasyprint ~=65.0",
-  "PyMuPDF ~=1.25.5",
-  "Markdown ~=3.7",
-  "html2text ~=2024.2.26",
+  "pandas ^1.5.1",
+  "pyarrow ^11.0",
+  "typer ^0.15",
+  "openpyxl ^3.1.5",
+  "weasyprint ^65.0",
+  "PyMuPDF ^1.25.5",
+  "Markdown ^3.7",
+  "html2text ^2024.2.26",
 ]
 
 [tool.poetry]
