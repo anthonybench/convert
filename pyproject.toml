@@ -1,27 +1,36 @@
-[tool.poetry]
+[project]
 name = "sleepyconvert"
-version = "1.0.1"
-description = "converts data files, images and documents to different formats"
-authors = ["anthonybench <anythonybenchyep@gmail.com>"]
-license = "GNU GPL"
+version = "1.0.2"
+description = "Converts data files, images and documents to different formats"
+keywords = ["pandas", "data", "documents", "images", "converter", "cli"]
+
+requires-python = ">=3.10"
+license = { file = "LICENSE" }
 readme = "README.md"
-repository = "https://github.com/anthonybench/convert"
-keywords = ["pandas", "data"]
-packages = [
-    { include = "sleepyconvert_toolchain" },
-    { include = "sleepyconvert.py" },
+authors = [
+  { name = "Isaac Yep", email = "anthonybenchyep@gmail.com" }
 ]
 
-[tool.poetry.dependencies]
-python = "^3.10"
-pandas = "^1.5.1"
-pyarrow = "^11.0"
-typer = "^0.15"
-openpyxl = "^3.1.5"
-weasyprint = "^65.0"
-PyMuPDF = "^1.25.5"
-Markdown = "^3.7"
-html2text = "^2024.2.26"
+dependencies = [
+  "python ~=3.10",
+  "pandas ~=1.5.1",
+  "pyarrow ~=11.0",
+  "typer ~=0.15",
+  "openpyxl ~=3.1.5",
+  "weasyprint ~=65.0",
+  "PyMuPDF ~=1.25.5",
+  "Markdown ~=3.7",
+  "html2text ~=2024.2.26",
+]
+
+[tool.poetry]
+packages = [
+  { include = "sleepyconvert_toolchain" },
+  { include = "sleepyconvert.py" },
+]
+
+[project.urls]
+repository = "https://github.com/anthonybench/convert"
 
 [build-system]
 requires = ["poetry-core"]
