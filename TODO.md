@@ -1,2 +1,3 @@
 - some issue with a weasyprint external dependency
 - github action for pypi build
+- update readme to reflect `~/.sleepyconfig/params.yml`
