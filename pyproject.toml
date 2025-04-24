@@ -1,6 +1,6 @@
 [project]
 name = "sleepyconvert"
-version = "1.0.4"
+version = "1.0.5"
 description = "Converts data files, images and documents to different formats"
 keywords = ["pandas", "data", "documents", "images", "converter", "cli"]
 

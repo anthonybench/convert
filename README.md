@@ -32,7 +32,6 @@ For some data files, you can optionally compress (*gzip*) the output.
 <br />
 
 ## **Get Started 🚀**
-<hr>
 
 ```sh
 pip install sleepyconvert
@@ -47,7 +46,6 @@ python -m sleepyconvert doc photo.html photo.pdf
 <br />
 
 ## **Usage ⚙**
-<hr>
 
 Set a function in your shell environment to run a script like:
 ```sh
@@ -65,7 +63,6 @@ convert doc photo.html photo.pdf
 <br />
 
 ## **Technologies 🧰**
-<hr>
 
   - [Pandas](https://pandas.pydata.org/docs/)
   - [Typer](https://typer.tiangolo.com/)
@@ -79,7 +76,6 @@ convert doc photo.html photo.pdf
 <br />
 
 ## **Contribute 🤝**
-<hr>
 
 If you have thoughts on how to make the tool more pragmatic, submit a PR 😊.
 
@@ -91,7 +87,6 @@ To add support for more data/file types:
 <br />
 
 ## **License, Stats, Author 📜**
-<hr>
 
 <img align="right" alt="example image tag" src="https://i.imgur.com/ZHnNGeO.png" width="200" />
 
@@ -103,4 +98,6 @@ To add support for more data/file types:
 
 See [License](LICENSE) for the full license text.
 
-This package was authored by *Isaac Yep*.
+This package was authored by *Isaac Yep*. \
+👉 [GitHub](https://github.com/anthonybench/convert) \
+👉 [PyPI](https://pypi.org/project/sleepyconvert/)
