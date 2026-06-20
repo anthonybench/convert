@@ -1,36 +1,49 @@
+[build-system]
+requires = ["poetry-core>=2.0"]
+build-backend = "poetry.core.masonry.api"
+
 [project]
 name = "sleepyconvert"
-version = "1.0.5"
-description = "Converts data files, images and documents to different formats"
-keywords = ["pandas", "data", "documents", "images", "converter", "cli"]
-
-requires-python = ">=3.10"
-license = { file = "LICENSE" }
+version = "2.0.0"
+description = "Convert data files, images, and documents between formats from a single terse CLI."
 readme = "README.md"
-authors = [
-  { name = "Isaac Yep", email = "anthonybenchyep@gmail.com" }
-]
-
+requires-python = ">=3.11"
+license = { file = "LICENSE" }
+keywords = ["pandas", "data", "documents", "images", "converter", "cli"]
+authors = [{ name = "Isaac Yep", email = "anthonybenchyep@gmail.com" }]
 dependencies = [
-  "pandas (>=1.5.1,<2.0.0)",
-  "pyarrow (>=11.0,<12.0)",
-  "typer (>=0.15,<1.0.0)",
-  "openpyxl (>=3.1.5,<4.0.0)",
-  "weasyprint (>=65.0,<66.0)",
-  "PyMuPDF (>=1.25.5,<2.0.0)",
-  "Markdown (>=3.7,<4.0.0)",
-  "html2text (>=2024.2.26,<2025.0.0)",
+  "beautifulsoup4>=4.12.0",
+  "markdown>=3.7",
+  "markdownify>=0.13.1",
+  "openpyxl>=3.1.0",
+  "pandas>=2.2.0",
+  "pillow>=11.0.0",
+  "pyarrow>=18.0.0",
+  "pypdf>=5.0.0",
+  "reportlab>=4.2.0",
+  "typer>=0.16.0",
 ]
 
-[tool.poetry]
-packages = [
-  { include = "sleepyconvert_toolchain" },
-  { include = "sleepyconvert.py" },
+[project.optional-dependencies]
+dev = [
+  "black>=24.10.0",
+  "pytest>=8.3.0",
+  "shfmt-py>=3.8.0",
 ]
 
 [project.urls]
 repository = "https://github.com/anthonybench/convert"
 
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+[project.scripts]
+sleepyconvert = "sleepyconvert.main:run"
+
+[tool.poetry]
+packages = [{ include = "sleepyconvert" }]
+
+[tool.black]
+line-length = 100
+target-version = ["py311"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = "*.py"
