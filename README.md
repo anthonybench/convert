@@ -12,8 +12,10 @@ Formats can only be converted within the same category.
 
 ## Install
 
+Install the CLI globally with [uv](https://docs.astral.sh/uv/):
+
 ```sh
-pip install sleepyconvert
+uv tool install sleepyconvert
 ```
 
 ## Usage
@@ -33,13 +35,14 @@ sleepyconvert --help
 
 ## Development
 
+Create the environment and install in editable mode with [uv](https://docs.astral.sh/uv/):
+
 ```sh
-python -m venv .venv
-source .venv/bin/activate
-pip install -e ".[dev]"
+uv venv
+uv pip install -e ".[dev]"
 ```
 
-Then run `pytest`, or `./tools/test.sh` to exercise the CLI end to end. Tear down with `deactivate && rm -rf .venv`.
+Then run `uv run pytest`, or `./tools/test.sh` to exercise the CLI end to end. Tear down with `rm -rf .venv`.
 
 ## Configuration
 

@@ -2,10 +2,11 @@
 
 ## Setup
 
-Install the package in editable mode with dev dependencies:
+Create the environment and install the package in editable mode with dev dependencies using [uv](https://docs.astral.sh/uv/):
 
 ```bash
-pip install -e ".[dev]"
+uv venv
+uv pip install -e ".[dev]"
 ```
 
 This registers the `sleepyconvert` CLI command and lets you edit source files without reinstalling.
@@ -13,7 +14,7 @@ This registers the `sleepyconvert` CLI command and lets you edit source files wi
 ## Running Tests
 
 ```bash
-pytest
+uv run pytest
 ```
 
 Tests live in `tests/` and use `tmp_path` fixtures — no setup or cleanup needed.
@@ -21,7 +22,7 @@ Tests live in `tests/` and use `tmp_path` fixtures — no setup or cleanup neede
 Test modules mirror their handler by name (no `test_` prefix), so run a single pair like this:
 
 ```bash
-pytest tests/cli/csv_parquet.py
+uv run pytest tests/cli/csv_parquet.py
 ```
 
 ## End-to-End Conversion Harness
