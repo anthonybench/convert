@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import shutil
+from datetime import date
 from pathlib import Path
 from typing import Callable
 
@@ -83,6 +85,27 @@ def _prepareOutputDirectory(output_file_path: Path) -> None:
     output_file_path.parent.mkdir(parents=True, exist_ok=True)
 
 
+def _archiveOutput(output_file_path: Path, archive_dir: Path) -> Path:
+    """Write a dated copy of the conversion output into the archive directory.
+
+    The archived file is named ``<yyyy>_<mm>_<dd>_<output_filename>`` and placed
+    inside ``archive_dir``.
+
+    Parameters:
+        output_file_path: The freshly written conversion output.
+        archive_dir: The directory to receive the dated copy.
+
+    Returns:
+        The path of the archived copy.
+    """
+
+    archive_dir.mkdir(parents=True, exist_ok=True)
+    stamp = date.today().strftime("%Y_%m_%d")
+    archive_path = archive_dir / f"{stamp}_{output_file_path.name}"
+    shutil.copy2(output_file_path, archive_path)
+    return archive_path
+
+
 def runConversion(input_path: str, output_path: str) -> None:
     """Validate arguments and perform the requested conversion.
 
@@ -124,3 +147,7 @@ def runConversion(input_path: str, output_path: str) -> None:
     )
     handler(input_file_path, output_file_path)
     typer.echo(f"Created {output_file_path}")
+
+    if config.output_archive_dir is not None:
+        archive_path = _archiveOutput(output_file_path, config.output_archive_dir)
+        typer.echo(f"Archived copy written to {archive_path}")

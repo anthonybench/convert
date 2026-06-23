@@ -3,7 +3,10 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from pathlib import Path
 import os
+
+from sleepyconvert.core.sleepy_params import loadSleepyParams
 
 
 @dataclass(frozen=True)
@@ -13,10 +16,13 @@ class AppConfig:
     Parameters:
         supported_extensions: Mapping of category names to supported file extensions.
         log_level: The configured logging level name.
+        output_archive_dir: Optional directory to receive a dated copy of every
+            conversion output. ``None`` disables archiving.
     """
 
     supported_extensions: dict[str, tuple[str, ...]]
     log_level: str
+    output_archive_dir: Path | None = None
 
     def getCategoryForExtension(self, extension: str) -> str | None:
         """Return the category associated with a supported extension.
@@ -35,7 +41,10 @@ class AppConfig:
 
 
 def loadAppConfig() -> AppConfig:
-    """Load application configuration from defaults and environment variables.
+    """Load application configuration from defaults, environment, and shared params.
+
+    The optional output archive directory is sourced from the shared sleepy
+    config at ``~/sleepyconfig/params.yml`` (created with defaults on first run).
 
     Parameters:
         None.
@@ -50,4 +59,13 @@ def loadAppConfig() -> AppConfig:
         "doc": ("html", "pdf", "md"),
     }
     log_level = os.getenv("CONVERT_LOG_LEVEL", "INFO").upper()
-    return AppConfig(supported_extensions=supported_extensions, log_level=log_level)
+
+    params = loadSleepyParams()
+    raw_archive_dir = params.get("convert_output_archive_dir")
+    output_archive_dir = Path(raw_archive_dir).expanduser() if raw_archive_dir else None
+
+    return AppConfig(
+        supported_extensions=supported_extensions,
+        log_level=log_level,
+        output_archive_dir=output_archive_dir,
+    )

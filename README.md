@@ -41,6 +41,16 @@ pip install -e ".[dev]"
 
 Then run `pytest`, or `./tools/test.sh` to exercise the CLI end to end. Tear down with `deactivate && rm -rf .venv`.
 
+## Configuration
+
+`sleepyconvert` is a *sleepy util* and reads shared settings from
+`~/sleepyconfig/params.yml`. On first run the file is created with defaults and
+a note is printed to the console. Relevant key:
+
+- `convert_output_archive_dir` — when set to a directory, every conversion also
+  writes a dated copy of its output there as
+  `<archive_dir>/<yyyy>_<mm>_<dd>_<output_filename>`. Leave as `null` to disable.
+
 ## Documentation
 
 - [Specification](docs/SPEC.md) — what the tool does
