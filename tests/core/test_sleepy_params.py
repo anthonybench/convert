@@ -34,7 +34,7 @@ def testLoadSleepyParamsWritesDefaultsWhenMissing(
 
     assert params_path.exists()
     assert params["convert_output_archive_dir"] is None
-    assert any("wrote defaults" in message for message in messages)
+    assert any("defaults" in message for message in messages)
 
 
 def testLoadAppConfigReadsArchiveDir(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:

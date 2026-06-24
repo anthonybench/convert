@@ -46,13 +46,21 @@ Then run `uv run pytest`, or `./tools/test.sh` to exercise the CLI end to end. T
 
 ## Configuration
 
-`sleepyconvert` is a *sleepy util* and reads shared settings from
-`~/sleepyconfig/params.yml`. On first run the file is created with defaults and
-a note is printed to the console. Relevant key:
+`sleepyconvert` is a *sleepy util* and reads its settings from the shared
+`~/sleepyconfig/params.yml`. Each sleepy util owns only its own `<tool>_<name>`
+keys; sleepyconvert uses the `convert_` prefix. If the file is absent,
+sleepyconvert writes only its own section and prints a note. If a value it
+needs is missing, it prints that section and asks you to verify your config.
+Key:
 
 - `convert_output_archive_dir` — when set to a directory, every conversion also
   writes a dated copy of its output there as
   `<archive_dir>/<yyyy>_<mm>_<dd>_<output_filename>`. Leave as `null` to disable.
+
+```yaml
+# sleepyconvert
+convert_output_archive_dir: null
+```
 
 ## Documentation
 

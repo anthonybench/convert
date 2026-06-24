@@ -6,7 +6,7 @@ from dataclasses import dataclass
 from pathlib import Path
 import os
 
-from sleepyconvert.core.sleepy_params import loadSleepyParams
+from sleepyconvert.core.sleepy_params import loadSleepyParams, requireParam
 
 
 @dataclass(frozen=True)
@@ -61,7 +61,7 @@ def loadAppConfig() -> AppConfig:
     log_level = os.getenv("CONVERT_LOG_LEVEL", "INFO").upper()
 
     params = loadSleepyParams()
-    raw_archive_dir = params.get("convert_output_archive_dir")
+    raw_archive_dir = requireParam(params, "convert_output_archive_dir")
     output_archive_dir = Path(raw_archive_dir).expanduser() if raw_archive_dir else None
 
     return AppConfig(
