@@ -67,4 +67,5 @@ convert_output_archive_dir: null
 - [Specification](docs/SPEC.md) — what the tool does
 - [Project outline](docs/OUTLINE.md) — repository layout
 - [Test drive](docs/test_drive.md) — setup, testing, and CLI usage
+- [Adding a conversion](docs/new_command.md) — how to add a new format pair
 - [Publishing](docs/publish.md) — release to PyPI with Poetry
