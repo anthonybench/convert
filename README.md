@@ -18,6 +18,8 @@
 uv tool install sleepyconvert     # or: pipx install sleepyconvert
 ```
 
+> `-v` / `--version` prints the version and best-effort checks PyPI for a newer release — it works even when placed alongside the paths.
+
 ## Configure
 
 `sleepyconvert` is a _sleepy util_ and reads its settings from the shared `~/sleepyconfig/params.yml`, using the `convert_` key prefix. If the file is absent it writes **only its own section** (below) and says so; if a value it needs is missing it prints this snippet and asks you to verify your config.
