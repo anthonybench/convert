@@ -7,13 +7,14 @@ import sys
 import typer
 
 from sleepyconvert.cli.command_logic import runConversion
+from sleepyconvert.core.about import printAbout, wantsAbout
 from sleepyconvert.core.version import printVersion, wantsVersion
 
 app = typer.Typer(
     add_completion=False,
     help=(
         "Convert files between supported formats by passing an input and output path. "
-        "Pass -v/--version to print the version."
+        "Pass -v/--version to print the version, or `about` for project links."
     ),
 )
 
@@ -28,12 +29,17 @@ def main(input_path: str, output_path: str) -> None:
 def run() -> None:
     """Run the Typer application.
 
-    ``-v``/``--version`` is honored before Typer parses, so it works even when it
-    appears alongside the paths; the conversion is skipped.
+    ``-v``/``--version`` and the ``about`` pseudo-command are honored before Typer
+    parses (sleepyconvert is a single-command CLI, so they can't be real
+    subcommands); when present, the conversion is skipped.
     """
 
-    if wantsVersion(sys.argv[1:]):
+    args = sys.argv[1:]
+    if wantsVersion(args):
         printVersion()
+        return
+    if wantsAbout(args):
+        printAbout()
         return
     app()
 

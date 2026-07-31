@@ -18,7 +18,7 @@
 uv tool install sleepyconvert     # or: pipx install sleepyconvert
 ```
 
-> `-v` / `--version` prints the version and best-effort checks PyPI for a newer release — it works even when placed alongside the paths.
+> `-v` / `--version` prints the version and best-effort checks PyPI for a newer release — it works even when placed alongside the paths. Run `sleepyconvert about` for the project's PyPI + GitHub links.
 
 ## Configure
 
@@ -84,6 +84,15 @@ Mixing categories fails fast with a clear message:
 $ sleepyconvert data.csv chart.png
 Error: Input and output extensions must belong to the same type group.
 Use `convert --help` to see the supported categories.
+```
+
+**About** — print the version and the project's public PyPI + GitHub links:
+
+```console
+$ sleepyconvert about
+sleepyconvert 2.3.1
+PyPI:   https://pypi.org/project/sleepyconvert/
+GitHub: https://github.com/anthonybench/convert
 ```
 
 ## Development

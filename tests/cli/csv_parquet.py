@@ -74,4 +74,6 @@ def testRejectsCrossTypeConversion(tmp_path: Path) -> None:
     result = runner.invoke(app, [str(input_path), str(output_path)])
 
     assert result.exit_code != 0
-    assert "supported categories" in result.stdout
+    # typer.BadParameter (a Click UsageError) writes to stderr; since Click 8.2
+    # CliRunner keeps the streams separate, so assert against stderr.
+    assert "supported categories" in result.stderr
