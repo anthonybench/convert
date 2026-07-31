@@ -4,13 +4,28 @@ build-backend = "poetry.core.masonry.api"
 
 [project]
 name = "sleepyconvert"
-version = "2.3.0"
+version = "2.3.1"
 description = "Convert data files, images, and documents between formats from a single terse CLI."
 readme = "README.md"
 requires-python = ">=3.11"
-license = { file = "LICENSE" }
+license = "GPL-3.0-or-later"
+license-files = ["LICENSE"]
 keywords = ["pandas", "data", "documents", "images", "converter", "cli"]
 authors = [{ name = "Isaac Yep", email = "anthonybenchyep@gmail.com" }]
+classifiers = [
+  "Development Status :: 5 - Production/Stable",
+  "Environment :: Console",
+  "Intended Audience :: Developers",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: Utilities",
+  "Topic :: Multimedia :: Graphics :: Graphics Conversion",
+  "Topic :: Text Processing :: Markup",
+  "Topic :: Software Development :: Libraries :: Python Modules",
+]
 dependencies = [
   "beautifulsoup4>=4.12.0",
   "markdown>=3.7",
@@ -33,7 +48,11 @@ dev = [
 ]
 
 [project.urls]
-repository = "https://github.com/anthonybench/convert"
+Homepage = "https://github.com/anthonybench/convert"
+Documentation = "https://github.com/anthonybench/convert#readme"
+Source = "https://github.com/anthonybench/convert"
+Issues = "https://github.com/anthonybench/convert/issues"
+Changelog = "https://github.com/anthonybench/convert/releases"
 
 [project.scripts]
 sleepyconvert = "sleepyconvert.main:run"
